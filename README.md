@@ -96,3 +96,7 @@ Example JSON response:
 	}
 }
 ```
+
+## Next Step
+
+Start with [PART1.md](PART1.md).
