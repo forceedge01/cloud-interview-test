@@ -9,7 +9,6 @@ app = Flask(__name__)
 API_TOKEN = os.environ["API_TOKEN"]
 
 @app.route("/users/<int:user_id>", methods=["GET"])
-
 def get_user(user_id):
     connection = None
 
