@@ -1,6 +1,5 @@
 import os
-import hmac
-from socket import create_connection
+import pymysql
 from flask import Flask, request, jsonify
 
 # Objective is to retrieve a user from the database by ID 
@@ -9,64 +8,45 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 API_TOKEN = os.environ["API_TOKEN"]
 
-def is_authenticated():
-    auth = request.headers.get("Authorization", "")
-
-    if not auth.startswith("Bearer "):
-        return False
-
-    token = auth.split(" ", 1)[1]
-    return hmac.compare_digest(token, API_TOKEN)
-
 @app.route("/users/<int:user_id>", methods=["GET"])
 
 def get_user(user_id):
-    if not is_authenticated():
-        return jsonify({"error": "Unauthorized"}), 401
+    connection = None
 
     try:
-        user = get_user_from_db(user_id)
-        if user is None:
-            return jsonify({"error": "User not found"}), 404
-        return jsonify(user)
+        auth = request.headers.get("Authorization", "")
+        token = auth.replace("Bearer ", "")
 
-    except Exception:
-        # Log the actual error internally, but don't expose DB details.
-        app.logger.exception("Error while fetching user")
+        if token != API_TOKEN:
+            return jsonify({"error": "Unauthorized"}), 500
 
-        return jsonify({"error": "Internal server error"}), 500
-
-def get_user_from_db(user_id):
-    connection = create_connection(
-        os.environ["DB_USERNAME"],
-        os.environ["DB_PASSWORD"]
-    )
-
-    try:
-        # Use a parameterized query instead of putting user_id
-        # directly into the SQL string.
-        cursor = connection.execute(
-            """
-            SELECT id, username, email
-            FROM users
-            WHERE id = ?
-            """,
-            (user_id,)
+        connection = pymysql.connect(
+            host=os.environ.get("DB_HOST", "127.0.0.1"),
+            port=int(os.environ.get("DB_PORT", "3306")),
+            user=os.environ.get("DB_USER", "interview_user"),
+            password=os.environ.get("DB_PASSWORD", "interview_pass"),
+            database=os.environ.get("DB_NAME", "interview_db"),
         )
+        cursor = connection.cursor()
 
+        query = f"SELECT id, username, email FROM users WHERE id = {user_id}"
+        cursor.execute(query)
         row = cursor.fetchone()
 
         if not row:
-            return None
+            return jsonify({"error": "User not found"}), 500
 
-        return {
+        return jsonify({
             "id": row[0],
             "username": row[1],
             "email": row[2]
-        }
+        })
 
+    except Exception:
+        return jsonify({"error": "Request failed"}), 500
     finally:
-        connection.close()
+        if connection:
+            connection.close()
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=True)

@@ -43,44 +43,10 @@ git clone -b <branch-name> https://github.com/forceedge01/cloud-interview-test.g
 cd cloud-interview-test
 ```
 
-## 4) Set variables
+## 4) Build and push to ECR
 
-```bash
-export AWS_REGION="eu-west-2"
-export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
-export ECR_REPO="cloud-interview-test-api"
-export IMAGE_TAG="v1"
-```
+Build the project image using containerisation and push to the following ECR repository:
 
-## 5) Create repository (if missing)
+test-interviewee/<your-first-name>
 
-```bash
-aws ecr describe-repositories --repository-names "$ECR_REPO" --region "$AWS_REGION" || \
-aws ecr create-repository --repository-name "$ECR_REPO" --region "$AWS_REGION"
-```
-
-## 6) Login to ECR from CloudShell
-
-```bash
-aws ecr get-login-password --region "$AWS_REGION" | docker login --username AWS --password-stdin "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com"
-```
-
-## 7) Build and tag image
-
-```bash
-cd code
-docker build -f dockerfile -t "$ECR_REPO:$IMAGE_TAG" .
-docker tag "$ECR_REPO:$IMAGE_TAG" "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG"
-```
-
-## 8) Push image
-
-```bash
-docker push "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG"
-```
-
-## 9) Verify image in ECR
-
-```bash
-aws ecr describe-images --repository-name "$ECR_REPO" --region "$AWS_REGION"
-```
+Note: The repository should already exist on ECR.

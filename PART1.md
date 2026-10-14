@@ -6,7 +6,7 @@
 
 ## Goal
 
-Run the API locally, validate it works, and commit your code changes.
+Run the API locally, validate it works, and commit your code changes. We would like to see design improvements where possible but most of all a working API is priority. Add automated tests where possible.
 
 ## 1) Clone and checkout branch
 
@@ -15,9 +15,19 @@ git clone -b <your-first-name> https://github.com/forceedge01/cloud-interview-te
 cd cloud-interview-test/code
 ```
 
-The code is in the 'code' folder. You'll find basic ORM files in the orm folder. The db folder has the basic schema against which you're developing. The docker-compose file will allow you to spin up a local database to work with.
+The API code is in the 'code' folder. You'll find basic Flask API implementation along with ORM files in the orm folder. The db folder has the basic schema against which you're developing. The docker-compose file will allow you to spin up a local database to work with.
+
+For deployment to the server environment, configure the application to use the **production RDS instance** (not local DB settings). The database username and password are stored in **AWS Secrets Manager** and must be fetched from there.
+
+Example (replace with provided secret name):
+
+```bash
+aws secretsmanager get-secret-value --secret-id <provided-secret-name> --query SecretString --output text
+```
 
 ## 4) Run API locally
+
+After creating a python virtual environment run the API by invoking the main file
 
 ```bash
 python main.py
@@ -50,6 +60,7 @@ Expected output example:
 ## 6) Commit and push
 
 ```bash
+git status # Check you're on your own branch
 git add .
 git commit -m "Part 1: local run and test"
 git push origin <your-first-name>

@@ -24,6 +24,7 @@ No fixed path is required as long as all required outcomes below are satisfied.
 5. Enable HTTPS/TLS with a valid certificate (for example ACM-managed certificate).
 6. Apply protections against common web attacks.
 7. Manage sensitive values securely.
+8. Use production RDS credentials from AWS Secrets Manager (do not hardcode DB credentials in code, task definitions, or repository files).
 
 ## Validation
 

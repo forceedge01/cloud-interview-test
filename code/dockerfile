@@ -1,3 +1,4 @@
+# This is your original answer from Codility.
 FROM python:3.12-slim
 
 WORKDIR /app
