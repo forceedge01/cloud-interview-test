@@ -58,3 +58,7 @@ Expected output example:
 - Key security controls implemented
 - Endpoint URL used for validation
 - Brief trade-off notes
+
+## Next Step
+
+This is the end of the technical exercise. Thanks for your time, please let the team know to proceed.

@@ -65,3 +65,7 @@ git add .
 git commit -m "Part 1: local run and test"
 git push origin <your-first-name>
 ```
+
+## Next Step
+
+Continue to [PART2.md](PART2.md).

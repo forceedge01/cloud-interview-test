@@ -50,3 +50,7 @@ Build the project image using containerisation and push to the following ECR rep
 test-interviewee/<your-first-name>
 
 Note: The repository should already exist on ECR.
+
+## Next Step
+
+Continue to [PART3.md](PART3.md).
