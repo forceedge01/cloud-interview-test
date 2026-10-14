@@ -4,11 +4,19 @@
 
 This exercise is designed to assess your ability to navigate a range of technical challenges and deliver a working solution end-to-end.
 
-## Time-boxed Assessment Areas
+## Time-boxed Assessment Areas and Delivery Flow
 
-1. **Python, RDS, database relations, and querying** (15 minutes)
-2. **Containerisation skills** (15 minutes)
-3. **AWS cloud know-how** (15 minutes)
+Follow the exercise in this order:
+
+1. **Part 1 - Code locally and test** (guide: ~25 minutes)
+	- Focus: Python, database relations, querying
+	- Instructions: [PART1.md](PART1.md)
+2. **Part 2 - Build and push to ECR** (guide: ~15 minutes)
+	- Focus: Containerisation skills
+	- Instructions: [PART2.md](PART2.md)
+3. **Part 3 - Deploy using image from ECR** (guide: ~30 minutes)
+	- Focus: AWS cloud know-how
+	- Instructions: [PART3.md](PART3.md)
 
 ## Objective
 
@@ -46,7 +54,7 @@ Use of AI is permitted during this exercise.
 
 ## Git Requirement
 
-You must push your working solution to Git.
+You must push your working solution to Git. Credentials will be provided.
 
 ## Containerisation Exercise Environment
 
