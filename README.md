@@ -13,7 +13,23 @@ Before starting ensure you have:
 - Credentials for Github and AWS Console.
 - Git is installed locally.
 - A code editor of your choice.
-- You are logged in to the provided AWS account and have switched to the dev role.
+
+Before the timer starts, complete AWS access setup:
+
+1. Sign in to AWS Console with the credentials provided:
+	- https://eu-north-1.signin.aws.amazon.com/
+2. In the AWS Console (top-right), select **Switch role**.
+3. Enter:
+	- **Account**: `<provided-account-number>`
+	- **Role**: `interviewee-dev-role`
+4. Open a **new CloudShell session** after switching role.
+5. Verify role in CloudShell:
+
+```bash
+aws sts get-caller-identity
+```
+
+The returned ARN must show the switched role session.
 
 We will start the exercise clock once these are confirmed.
 

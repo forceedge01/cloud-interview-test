@@ -10,7 +10,9 @@ Build a container image from the API code and push it to Amazon ECR.
 
 ## Environment for this part
 
-This part is executed in **AWS CloudShell** (not your local terminal).
+You should develop/update the `dockerfile` locally.
+
+You may test the image locally with `docker build`, but the ECR push step must be executed from **AWS CloudShell**.
 
 ## 1) Prerequisites
 
@@ -18,23 +20,11 @@ This part is executed in **AWS CloudShell** (not your local terminal).
 - AWS CloudShell access is enabled
 - Git access to clone the interview repository branch
 
-## 2) Sign in and switch role first
+## 2) Fix the dockerfile locally first
 
-1. Sign in to AWS Console with the credentials provided:
-	- https://eu-north-1.signin.aws.amazon.com/
-2. In the AWS Console (top-right), select **Switch role**.
-3. Enter:
-	- **Account**: `<provided-account-number>`
-	- **Role**: `interviewee-dev-role`
-4. Open a **new CloudShell session** after switching role.
+Before CloudShell build/push, update the `dockerfile` in your local branch so it is ready for a successful image build.
 
-Verify role in CloudShell:
-
-```bash
-aws sts get-caller-identity
-```
-
-The returned ARN must show the switched role session.
+Commit and push your dockerfile changes.
 
 ## 3) Clone the same branch in CloudShell
 
