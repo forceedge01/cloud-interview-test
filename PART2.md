@@ -29,11 +29,24 @@ Commit and push your dockerfile changes.
 ## 3) Clone the same branch in CloudShell
 
 ```bash
+rm -rf cloud-interview-test
 git clone -b <branch-name> https://github.com/forceedge01/cloud-interview-test.git
 cd cloud-interview-test
 ```
 
 ## 4) Build and push to ECR
+
+Environment setup:
+
+```bash
+export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
+export ECR_REPO="test-interviewee/<your-first-name>"
+export IMAGE_TAG="v1"
+export REPO_URL"$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG"
+
+# login to ECR
+make ecr-login
+```
 
 Build the project image using containerisation and push to the following ECR repository:
 
