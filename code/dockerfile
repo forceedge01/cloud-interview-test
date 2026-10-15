@@ -5,17 +5,28 @@ WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1
 
-ENV PYTHONBUFFERED=1
+ENV PYTHONUNBUFFERED=1
+
+# Non-secret DB settings. DB_HOST is the RDS endpoint, set by the task definition.
+# DB_SECRET_ID is only the name of the RDS-managed secret: the app fetches the
+# username/password from Secrets Manager at runtime (the task role needs
+# secretsmanager:GetSecretValue on it). Never bake credentials into the image.
+ENV DB_PORT=3306 \
+    DB_NAME=interview_db \
+    DB_SECRET_ID=rds!cluster-b5a9107f-4b3e-45f3-9eb6-a2df9a11d9bd
 
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY main.py .
+COPY main.py alembic.ini ./
+COPY orm/ orm/
+COPY migrations/ migrations/
 
 #run application as non root user
-Run useradd --create-home appuser USER appuser
+RUN useradd --create-home appuser
+USER appuser
 
 EXPOSE 5000
 
-CMD["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]

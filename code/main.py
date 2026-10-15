@@ -1,12 +1,22 @@
 import os
 import pymysql
 from flask import Flask, request, jsonify
+from dotenv import load_dotenv
+from orm.database import create_db_engine
+from orm.user import User
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+load_dotenv()
 
 # Objective is to retrieve a user from the database by ID 
 # along with their role and permissions.
 
 app = Flask(__name__)
 API_TOKEN = os.environ["API_TOKEN"]
+
+
+engine = create_db_engine()
 
 @app.route("/users/<int:user_id>", methods=["GET"])
 def get_user(user_id):
@@ -19,30 +29,22 @@ def get_user(user_id):
         if token != API_TOKEN:
             return jsonify({"error": "Unauthorized"}), 500
 
-        connection = pymysql.connect(
-            host=os.environ.get("DB_HOST", "127.0.0.1"),
-            port=int(os.environ.get("DB_PORT", "3306")),
-            user=os.environ.get("DB_USER", "interview_user"),
-            password=os.environ.get("DB_PASSWORD", "interview_pass"),
-            database=os.environ.get("DB_NAME", "interview_db"),
-        )
-        cursor = connection.cursor()
+        with Session(engine) as session:
+            stmt = select(User).where(User.id == user_id)
+            user = session.execute(stmt).scalar_one_or_none()
 
-        query = f"SELECT id, username, email FROM users WHERE id = {user_id}"
-        cursor.execute(query)
-        row = cursor.fetchone()
+            if not user:
+                return jsonify({"error": "User not found"}), 500
 
-        if not row:
-            return jsonify({"error": "User not found"}), 500
+            return jsonify({
+                "id": user.id,
+                "username": user.username,
+                "email": user.email,
+                "permissions": [permission.permission_name for permission in user.permissions]
+            })
 
-        return jsonify({
-            "id": row[0],
-            "username": row[1],
-            "email": row[2]
-        })
-
-    except Exception:
-        return jsonify({"error": "Request failed"}), 500
+    except Exception as e:
+        return jsonify({"error": f"Request failed, {str(e)}"}), 500
     finally:
         if connection:
             connection.close()

@@ -8,6 +8,7 @@ from alembic import context
 from sqlalchemy import engine_from_config, pool
 
 from orm.base import Base
+from orm.database import database_url
 from orm.user import User  # noqa: F401
 from orm.rbac import Rbac  # noqa: F401
 
@@ -33,17 +34,13 @@ def _load_dotenv() -> None:
             os.environ[key] = value
 
 
-def _database_url() -> str:
-    _load_dotenv()
-    host = os.getenv("DB_HOST", "127.0.0.1")
-    port = os.getenv("DB_PORT", "3306")
-    name = os.getenv("DB_NAME", "interview_db")
-    user = os.getenv("DB_USER", "interview_user")
-    password = os.getenv("DB_PASSWORD", "interview_pass")
-    return f"mysql+pymysql://{user}:{password}@{host}:{port}/{name}"
-
-
-config.set_main_option("sqlalchemy.url", _database_url())
+_load_dotenv()
+# render_as_string keeps special characters in the password URL-encoded;
+# "%" is doubled because alembic config values go through configparser.
+config.set_main_option(
+    "sqlalchemy.url",
+    database_url().render_as_string(hide_password=False).replace("%", "%%"),
+)
 
 target_metadata = Base.metadata
 

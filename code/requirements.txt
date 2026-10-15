@@ -3,4 +3,6 @@ psycopg2-binary
 SQLAlchemy
 gunicorn
 PyMySQL
+boto3
+python-dotenv
 alembic
