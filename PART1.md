@@ -12,7 +12,7 @@ Run the API locally, validate it works, and commit your code changes. We would l
 
 ```bash
 git clone -b <your-first-name> https://github.com/forceedge01/cloud-interview-test.git
-cd cloud-interview-test/code
+code cloud-interview-test
 ```
 
 The API code is in the 'code' folder. You'll find basic Flask API implementation along with ORM files in the orm folder. The db folder has the basic schema against which you're developing. The docker-compose file will allow you to spin up a local database to work with.

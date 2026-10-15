@@ -4,6 +4,19 @@
 
 This exercise is designed to assess your ability to navigate a range of technical challenges and deliver a working solution end-to-end.
 
+## Pre-requisites
+
+Before starting ensure you have:
+
+- Python 3.13+ installed on terminal.
+- Docker installed on terminal.
+- Credentials for Github and AWS Console.
+- Git is installed locally.
+- A code editor of your choice.
+- You are logged in to the provided AWS account and have switched to the dev role.
+
+We will start the exercise clock once these are confirmed.
+
 ## Time-boxed Assessment Areas and Delivery Flow
 
 Follow the exercise in this order:
