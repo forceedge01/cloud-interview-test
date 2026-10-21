@@ -8,6 +8,11 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 API_TOKEN = os.environ["API_TOKEN"]
 
+# Health endpoint for AWS.
+@app.route("/health")
+def health():
+    return jsonify({"status": "healthy"}), 200
+
 @app.route("/users/<int:user_id>", methods=["GET"])
 def get_user(user_id):
     connection = None
