@@ -22,7 +22,7 @@ ecr-login:
 	aws ecr get-login-password --region "$$AWS_REGION" | docker login --username AWS --password-stdin "$$AWS_ACCOUNT_ID.dkr.ecr.$$AWS_REGION.amazonaws.com"
 
 ecr-build:
-	docker build -t "$$AWS_ACCOUNT_ID.dkr.ecr.$$AWS_REGION.amazonaws.com/$$ECR_REPO_URL:$$IMAGE_TAG" .
+	docker build -t "$$ECR_REPO_URL:$$IMAGE_TAG" .
 
 ecr-push:
 	docker push "$$ECR_REPO_URL:latest"
