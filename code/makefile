@@ -25,4 +25,4 @@ ecr-build:
 	docker build -t "$$AWS_ACCOUNT_ID.dkr.ecr.$$AWS_REGION.amazonaws.com/$$ECR_REPO_URL:$$IMAGE_TAG" .
 
 ecr-push:
-	docker push "$$AWS_ACCOUNT_ID.dkr.ecr.$$AWS_REGION.amazonaws.com/$$ECR_REPO_URL:latest"
+	docker push "$$ECR_REPO_URL:latest"
