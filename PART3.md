@@ -10,9 +10,14 @@ Deploy the service by pulling the image from ECR and exposing it through a prote
 
 ## Candidate implementation freedom
 
-This is a senior-level assessment. You may use UI, CLI, Terraform, or CloudFormation.
+This is a senior-level assessment. You may use AWS Web Console or AWS CloudFormation (AWS CloudShell).
 
 No fixed path is required as long as all required outcomes below are satisfied.
+
+## Pre-requisites
+
+Refer to the main pre-requisites in [README.md](README.md#pre-requisites).
+
 
 ## Required outcomes
 
