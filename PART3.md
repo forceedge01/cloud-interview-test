@@ -24,7 +24,7 @@ Refer to the main pre-requisites in [README.md](README.md#pre-requisites).
 1. Deploy the API using the image produced in Part 2 (from ECR).
 2. Ensure the API container/service is not directly exposed to the public internet.
 3. Expose the API through a managed secure entry point (for example: ALB or API Gateway).
-4. Serve the API through the domain candidate-test.co.uk (this domain registered and setup for you in route53).
+4. Serve the API through the domain candidate-test.co.uk (this domain registered and setup for you in [route53](https://console.aws.amazon.com/route53/v2/hostedzones?region=eu-west-2#ListRecordSets/Z09387322ANGIEFFO5CCP)).
 4.1. Verify by `curl "https://dns.google/resolve?name=candidate-test.co.uk&type=NS" | jq -r '.Answer[] | .data'` which should list all awsdns entries.
 5. Enable HTTPS/TLS with a valid certificate (for example ACM-managed certificate).
 6. Apply protections against common web attacks.
