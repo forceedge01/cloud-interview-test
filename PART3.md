@@ -30,6 +30,7 @@ The following foundation is already set up for you:
 - VPC endpoints for required private AWS service connectivity
 - ECR repository with the image from Part 2
 - Route53 public hosted zone for candidate-test.co.uk
+- SSL/TLS certificate for candidate-test.co.uk (ACM)
 - ECS cluster for service deployment
 - AWS CloudShell setup and access for CloudFormation/CLI-based deployment
 
