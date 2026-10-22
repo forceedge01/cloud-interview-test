@@ -1,5 +1,7 @@
 # PART 2 - Build and Push Image to ECR
 
+Previous: [PART1.md](PART1.md) | Next: [PART3.md](PART3.md)
+
 ## Guide time
 
 ~15 minutes
@@ -57,3 +59,5 @@ Note: The repository should already exist on ECR.
 ## Next Step
 
 Continue to [PART3.md](PART3.md).
+
+Previous: [PART1.md](PART1.md) | Next: [PART3.md](PART3.md)
