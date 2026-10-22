@@ -1,6 +1,6 @@
 # PART 1 - Code Locally and Test
 
-Previous: N/A | Next: [PART2.md](PART2.md)
+Next: [PART2.md](PART2.md)
 
 ## Guide time
 
@@ -70,7 +70,5 @@ git push origin <your-first-name>
 ```
 
 ## Next Step
-
-Continue to [PART2.md](PART2.md).
 
 Next: [PART2.md](PART2.md)

@@ -58,6 +58,4 @@ Note: The repository should already exist on ECR.
 
 ## Next Step
 
-Continue to [PART3.md](PART3.md).
-
 Previous: [PART1.md](PART1.md) | Next: [PART3.md](PART3.md)
