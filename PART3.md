@@ -25,6 +25,7 @@ Refer to the main pre-requisites in [README.md](README.md#pre-requisites).
 The following foundation is already set up for you:
 
 - VPC and subnets
+- Internet Gateway attached to the workload VPC
 - RDS database and credentials stored in AWS Secrets Manager
 - RDS schema already migrated (`users`, `rbac`) with seed data (user `alice` and RBAC permissions)
 - VPC endpoints for required private AWS service connectivity
