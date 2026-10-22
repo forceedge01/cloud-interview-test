@@ -35,13 +35,16 @@ The following foundation is already set up for you:
 
 1. Deploy the API using the image produced in Part 2 (from ECR).
 2. Ensure the API container/service is not directly exposed to the public internet.
-3. Expose the API through a managed secure entry point (for example: ALB or API Gateway).
-4. Serve the API through the domain candidate-test.co.uk (this domain registered and setup for you in [route53](https://console.aws.amazon.com/route53/v2/hostedzones?region=eu-north-1#ListRecordSets/Z09387322ANGIEFFO5CCP)).
+3. Expose the API through a managed secure entry point.
+4. Manage sensitive values securely.
+5. Use production RDS credentials from AWS Secrets Manager (do not hardcode DB credentials in code, task definitions, or repository files).
+
+## Bonus outcomes
+
+6. Enable HTTPS/TLS with a valid certificate (for example ACM-managed certificate).
+7. Serve the API through the domain candidate-test.co.uk (this domain registered and setup for you in [route53](https://console.aws.amazon.com/route53/v2/hostedzones?region=eu-north-1#ListRecordSets/Z09387322ANGIEFFO5CCP)).
 	- Verify by `curl "https://dns.google/resolve?name=candidate-test.co.uk&type=NS" | jq -r '.Answer[] | .data'` which should list all awsdns entries.
-5. Enable HTTPS/TLS with a valid certificate (for example ACM-managed certificate).
-6. Apply protections against common web attacks.
-7. Manage sensitive values securely.
-8. Use production RDS credentials from AWS Secrets Manager (do not hardcode DB credentials in code, task definitions, or repository files).
+8. Apply protections against common web attacks.
 
 ## Validation
 
