@@ -42,7 +42,7 @@ Environment setup:
 export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
 export ECR_REPO="test-interviewee/<your-first-name>"
 export IMAGE_TAG="v1"
-export ECR_REPO_URL"$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO"
+export ECR_REPO_URL="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO"
 
 # login to ECR
 make ecr-login
