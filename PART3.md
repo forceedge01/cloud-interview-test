@@ -24,7 +24,7 @@ Refer to the main pre-requisites in [README.md](README.md#pre-requisites).
 
 The following foundation is already set up for you:
 
-- VPC and subnets
+- VPC with 2 private subnets and 2 public subnets
 - Internet Gateway attached to the workload VPC
 - RDS database and credentials stored in AWS Secrets Manager
 - RDS schema already migrated (`users`, `rbac`) with seed data (user `alice` and RBAC permissions)
@@ -56,7 +56,8 @@ The following foundation is already set up for you:
 Example request:
 
 ```bash
-curl -X GET "https://candidate-test.co.uk/users/1"
+curl -X GET "https://candidate-test.co.uk/users/1" \
+	-H "Authorization: Bearer ${API_TOKEN}"
 ```
 
 Expected output example:
