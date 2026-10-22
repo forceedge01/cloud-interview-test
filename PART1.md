@@ -20,13 +20,7 @@ make setup
 
 The API code is in the 'code' folder. You'll find basic Flask API implementation along with ORM files in the orm folder. The db folder has the basic schema against which you're developing. The docker-compose file will allow you to spin up a local database to work with.
 
-For deployment to the server environment, configure the application to use the **production RDS instance** (not local DB settings). The database username and password are stored in **AWS Secrets Manager** and must be fetched from there.
-
-Example (replace with provided secret name):
-
-```bash
-aws secretsmanager get-secret-value --secret-id <provided-secret-name> --query SecretString --output text
-```
+For remote deployment to the server environment, configure the application to use the **production RDS instance** (not local DB settings). The database username and password are stored in **AWS Secrets Manager** and must be fetched from there. The db name is 'interview_db' (same as local).
 
 ## 4) Run API locally
 
@@ -63,6 +57,7 @@ Expected output example:
 ## 6) Commit and push
 
 ```bash
+git checkout -b <your-first-name>
 git status # Check you're on your own branch
 git add .
 git commit -m "Part 1: local run and test"
