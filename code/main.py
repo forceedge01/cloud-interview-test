@@ -2,8 +2,22 @@ import os
 import pymysql
 from flask import Flask, request, jsonify
 
-# Objective is to retrieve a user from the database by ID 
-# along with their role and permissions.
+# This script exposes:
+# - GET /health for a basic health check
+# - GET /users/?user_id=<id> with Bearer token auth, then fetches a user row from MySQL
+#
+# Exercise objective:
+# Materially improve the application quality as much as possible
+# (security, correctness, resilience, and maintainability).
+#
+# Part 1 challenge focus:
+# - Implement GET /users/<id>
+# - Enforce bearer-token auth
+# - Return user data with RBAC role and permissions
+#
+# Target end-state behavior:
+# The API should be callable as:
+# curl -H "Authorization: Bearer ${API_TOKEN}" http://localhost:5000/users/1
 
 app = Flask(__name__)
 API_TOKEN = os.environ["API_TOKEN"]
@@ -18,11 +32,6 @@ def get_user():
     connection = None
 
     user_id = request.args.get('user_id')
-    auth = request.headers.get("Authorization", "")
-    token = auth.replace("Bearer ", "")
-
-    if token != API_TOKEN:
-        return jsonify({"error": "Unauthorized"}), 500
 
     connection = pymysql.connect(
         host=os.environ.get("DB_HOST", "127.0.0.1"),

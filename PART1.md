@@ -10,6 +10,12 @@ Next: [PART2.md](PART2.md)
 
 Run the API locally, validate it works, and commit your code changes. We would like to see design improvements where possible but most of all a working API is priority. Add automated tests where possible.
 
+### Part 1 challenge focus
+
+- Implement a secure `GET /users/<id>` endpoint.
+- Enforce bearer token auth using `Authorization: Bearer ${API_TOKEN}`.
+- Tie user lookup to RBAC data so the response includes permissions (`rbac.role` and `rbac.permissions`).
+
 ## 1) Clone and checkout branch
 
 ```bash
