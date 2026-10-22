@@ -4,3 +4,4 @@ SQLAlchemy
 gunicorn
 PyMySQL
 alembic
+awsgi
