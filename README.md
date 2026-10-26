@@ -1,4 +1,4 @@
-# Interview Exercise Instructions
+# Interview Exercise Outline
 
 ## Purpose
 
@@ -49,47 +49,15 @@ Follow the exercise in this order:
 
 ## Objective
 
-Deploy the provided API to AWS in a working state, using the approach you think is best.
-
-## Constraints
-
-- The API server must **not** be directly accessible from the public internet.
-- The deployment must include protection against common web attacks.
-
-Examples of acceptable protections include (but are not limited to):
-
-- Placing the API behind a managed entry point such as API Gateway or an Application Load Balancer.
-- Restricting network access with security groups and private subnets.
-- Enabling HTTPS/TLS.
-- Using AWS WAF (or equivalent controls) to mitigate common attack patterns.
+Fix and Deploy the provided API to AWS in a working state, using the approach you think is best.
 
 ## Source Code
 
 The code to deploy is in the **code** folder.
 
-## Deployment Approach
-
-You may choose any of the following:
-
-- **Terraform**
-- **CloudFormation**
-- **Manual AWS commands/setup**
-
-Any valid approach is acceptable as long as the API is successfully deployed and functional.
-
 ## AI Usage
 
 Use of AI is permitted during this exercise.
-
-## Git Requirement
-
-You must push your working solution to Git. Credentials will be provided.
-
-## Containerisation Exercise Environment
-
-The containerisation portion will be conducted using **AWS CloudShell**.
-
-We will guide you on how to log in to CloudShell before that part begins.
 
 ## What We Are Looking For
 
