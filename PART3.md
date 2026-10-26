@@ -51,6 +51,18 @@ The following foundation is already set up for you:
 	- Verify by `curl "https://dns.google/resolve?name=candidate-test.co.uk&type=NS" | jq -r '.Answer[] | .data'` which should list all awsdns entries.
 8. Apply protections against common web attacks.
 
+## Constraints
+
+- The API server must **not** be directly accessible from the public internet.
+- The deployment must include protection against common web attacks.
+
+Examples of acceptable protections include (but are not limited to):
+
+- Placing the API behind a managed entry point such as API Gateway or an Application Load Balancer.
+- Restricting network access with security groups and private subnets.
+- Enabling HTTPS/TLS.
+- Using AWS WAF (or equivalent controls) to mitigate common attack patterns.
+
 ## Validation
 
 Example request:
