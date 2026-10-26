@@ -39,7 +39,7 @@ python main.py
 ## 5) Test endpoint
 
 ```bash
-curl -H "Authorization: Bearer ${API_TOKEN}" http://localhost:5000/users/1
+curl -H "Authorization: Bearer ${API_TOKEN}" http://<local-address>:5000/users/1
 ```
 
 Expected output example:
