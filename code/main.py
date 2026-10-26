@@ -1,7 +1,7 @@
 import os
 import pymysql
 from flask import Flask, request, jsonify
-
+from dotenv import load_dotenv
 # This script exposes:
 # - GET /health for a basic health check
 # - GET /users/?user_id=<id> with Bearer token auth, then fetches a user row from MySQL
@@ -18,12 +18,12 @@ from flask import Flask, request, jsonify
 # Target end-state behavior:
 # The API should be callable as:
 # curl -H "Authorization: Bearer ${API_TOKEN}" http://localhost:5000/users/1
-
+load_dotenv()
 app = Flask(__name__)
 API_TOKEN = os.environ["API_TOKEN"]
 
 # Health endpoint for AWS.
-@app.route("/health")
+@app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "healthy"}), 200
 
@@ -57,3 +57,5 @@ def get_user():
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=True)
+
+
