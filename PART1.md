@@ -8,7 +8,7 @@ Next: [PART2.md](PART2.md)
 
 ## Goal
 
-Run the API locally, validate it works, and commit your code changes. We would like to see design improvements where possible but most of all a working API is priority. Add automated tests where possible.
+Run the Flask API locally, validate it works, and commit your code changes. We would like to see design improvements where possible but most of all a working API is priority. Add automated tests where possible.
 
 ### Part 1 challenge focus
 
