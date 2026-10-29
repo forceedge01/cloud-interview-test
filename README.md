@@ -57,7 +57,7 @@ The code to deploy is in the **code** folder.
 
 ## AI Usage
 
-Use of AI is permitted during this exercise.
+Use of AI assistance is permitted during this exercise, but not agentic assistance.
 
 ## What We Are Looking For
 
