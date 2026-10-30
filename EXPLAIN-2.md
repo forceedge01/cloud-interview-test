@@ -1,16 +1,16 @@
 What concerns would you have with this code?
 
 ```python
-@app.route("/user") 
-def get_user():
-    if request.headers.get("METHOD") != "GET": 
-        return "Invalid request type", 401
+@app.route("/invoices/<invoice_id>", methods=["GET"])
+def get_invoice(invoice_id):
+    invoice = db.get_invoice(invoice_id)  # returns owner_id, amount, card_last4, etc.
 
-    api_token = request.headers.get("Authorization")
+    if not invoice:
+        return "Not found", 404
 
-    if api_token != os.environ['API_TOKEN']:
-        return "Unauthorised", 403
+    user = current_user()
+    if user.is_authenticated():
+        return jsonify(invoice), 200
 
-    user_id = request.args.get('user_id')
-    return get_user(user_id)
+    return "Unauthorized", 401
 ```
