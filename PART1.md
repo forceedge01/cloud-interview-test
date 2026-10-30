@@ -6,10 +6,6 @@ Next: [PART2.md](PART2.md)
 
 ~25 minutes
 
-## Goal
-
-Run the Flask API locally, validate it works, and commit your code changes. We would like to see design improvements where possible but most of all a working API is priority. Add automated tests where possible.
-
 ### Approach
 - Take a few minutes to ingest the code in main.py.
 - Explain what you see and your concerns.
