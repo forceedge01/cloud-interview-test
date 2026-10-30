@@ -9,14 +9,14 @@ setup:
 	venv/bin/pip install -r requirements.txt
 
 migrate:
-	venv/bin/python -m alembic upgrade head
+	venv/bin/python -m alembic -c db/alembic.ini upgrade head
 
 migration-sql:
 	@if [ -z "$(FROM)" ] || [ -z "$(TO)" ]; then \
 		echo "Usage: make migration-sql FROM=<from_revision> TO=<to_revision>"; \
 		exit 1; \
 	fi
-	venv/bin/python -m alembic upgrade $(FROM):$(TO) --sql
+	venv/bin/python -m alembic -c db/alembic.ini upgrade $(FROM):$(TO) --sql
 
 ecr-login:
 	aws ecr get-login-password --region "$$AWS_REGION" | docker login --username AWS --password-stdin "$$AWS_ACCOUNT_ID.dkr.ecr.$$AWS_REGION.amazonaws.com"

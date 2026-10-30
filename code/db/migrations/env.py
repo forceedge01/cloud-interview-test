@@ -7,9 +7,9 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from orm.base import Base
-from orm.user import User  # noqa: F401
-from orm.rbac import Rbac  # noqa: F401
+from db.orm.base import Base
+from db.orm.user import User  # noqa: F401
+from db.orm.rbac import Rbac  # noqa: F401
 
 config = context.config
 
@@ -18,7 +18,7 @@ if config.config_file_name is not None:
 
 
 def _load_dotenv() -> None:
-    dotenv_path = Path(__file__).resolve().parent.parent / ".env"
+    dotenv_path = Path(__file__).resolve().parent.parent.parent / ".env"
     if not dotenv_path.exists():
         return
 
