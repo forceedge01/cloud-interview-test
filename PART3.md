@@ -4,7 +4,7 @@ Previous: [PART2.md](PART2.md)
 
 ## Guide time
 
-~40 minutes
+~30 minutes
 
 ## Goal
 
