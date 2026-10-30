@@ -1,4 +1,4 @@
-What concerns would you have with this code?
+What do you think this code does and what concerns would you have with this code?
 
 ```python
 @app.route("/invoices/<invoice_id>", methods=["GET"])

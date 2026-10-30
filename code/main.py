@@ -10,9 +10,6 @@ def health():
 
 @app.route("/users/")
 def get_user():
-    if request.headers.get("X-Admin-Access") == "true":
-        return jsonify({"error": "Admin access not allowed"}), 403
-
     connection = None
     user_id = request.args.get('user_id')
 
