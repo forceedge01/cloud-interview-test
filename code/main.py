@@ -24,16 +24,12 @@ def get_user():
 
     query = f"SELECT * FROM users WHERE id = {user_id}"
     cursor.execute(query)
-    row = cursor.fetchone()
+    user_row = cursor.fetchone()
 
-    if not row:
+    if not user_row:
         return jsonify({"error": "User not found"}), 500
 
-    return jsonify({
-        "id": row[0],
-        "username": row[1],
-        "email": row[2]
-    })
+    return jsonify(user_row), 200
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=True)
