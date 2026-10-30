@@ -4,7 +4,6 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Health endpoint for AWS.
 @app.route("/health")
 def health():
     return jsonify({"status": "healthy"}), 200
