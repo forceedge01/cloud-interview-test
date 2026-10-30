@@ -4,6 +4,21 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+# DB Structure of the user table:
+# CREATE TABLE users (
+#     id INT AUTO_INCREMENT,
+#     username VARCHAR(255) NOT NULL,
+#     email VARCHAR(255) NOT NULL,
+#     password VARCHAR(255) NULL
+# );
+
+# DB Structure of the roles table:
+# CREATE TABLE roles (
+#     id INT AUTO_INCREMENT,
+#     role_name VARCHAR(100) NOT NULL,
+#     permissions JSON(250) NOT NULL,
+# );
+
 @app.route("/health")
 def health():
     return jsonify({"status": "healthy"}), 200
