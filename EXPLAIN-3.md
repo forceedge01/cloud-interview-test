@@ -1,5 +1,3 @@
-What do you think this code does and what concerns would you have with this code?
-
 ```python
 @app.route("/ping")
 def ping_host():
