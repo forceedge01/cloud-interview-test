@@ -1,6 +1,6 @@
-# PART 3 - Deploy Using Image from ECR
+# PART 2 - Deploy Using Image from ECR
 
-Previous: [PART2.md](PART2.md)
+Previous: [PART1.md](PART1.md)
 
 ## Guide time
 
@@ -29,7 +29,7 @@ The following foundation is already set up for you:
 - RDS database and credentials stored in AWS Secrets Manager
 - RDS schema already migrated (`users`, `rbac`) with seed data (user `alice` and RBAC permissions)
 - VPC endpoints for required private AWS service connectivity
-- ECR repository with the image from Part 2
+- ECR repository with a ready-made application image for deployment
 - Route53 public hosted zone for candidate-test.co.uk
 - SSL/TLS certificate for candidate-test.co.uk (ACM)
 - ECS cluster for service deployment
@@ -99,5 +99,3 @@ Expected output example:
 ## Next Step
 
 This is the end of the technical exercise. Thanks for your time, please let the team know to proceed.
-
-Previous: [PART2.md](PART2.md)

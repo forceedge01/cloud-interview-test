@@ -1,6 +1,6 @@
 # PART 1 - Code Locally and Test
 
-Next: [PART2.md](PART2.md)
+Next: [PART3.md](PART3.md)
 
 ## Guide time
 
@@ -17,6 +17,7 @@ Next: [PART2.md](PART2.md)
 - Implement a secure `GET /users/<id>` endpoint.
 - Enforce bearer token auth using `Authorization: Bearer ${TOKEN}`.
 - Tie user lookup to RBAC data so the response includes permissions (`rbac.role` and `rbac.permissions`).
+- Build a local Docker image for the API (no ECR push required in this part).
 
 ## 1) Clone and checkout branch
 
@@ -64,6 +65,16 @@ Expected output example:
 
 ## 6) Commit and push
 
+## 6) Build container image locally
+
+```bash
+docker build -t interview-api:local .
+```
+
+No ECR push is required in this part.
+
+## 7) Commit and push
+
 ```bash
 git checkout -b <your-first-name>
 git status # Check you're on your own branch
@@ -74,4 +85,4 @@ git push origin <your-first-name>
 
 ## Next Step
 
-Next: [PART2.md](PART2.md)
+Next: [PART3.md](PART3.md)

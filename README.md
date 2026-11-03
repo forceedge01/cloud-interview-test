@@ -38,12 +38,9 @@ We will start the exercise clock once these are confirmed.
 Follow the exercise in this order:
 
 1. **Part 1 - Code locally and test** (guide: ~25 minutes)
-	- Focus: Python, database relations, querying
+	- Focus: Python, database relations, querying, local image build
 	- Instructions: [PART1.md](PART1.md)
-2. **Part 2 - Build and push to ECR** (guide: ~10 minutes)
-	- Focus: Containerisation skills
-	- Instructions: [PART2.md](PART2.md)
-3. **Part 3 - Deploy using image from ECR** (guide: ~30 minutes)
+2. **Part 2 - Deploy using image from ECR** (guide: ~30 minutes)
 	- Focus: AWS cloud know-how
 	- Instructions: [PART3.md](PART3.md)
 
