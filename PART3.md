@@ -36,12 +36,12 @@ The following foundation is already set up for you:
 - AWS CloudShell setup and access for CloudFormation/CLI-based deployment
 
 
-## Required outcomes
+## Required outcomes (Definition of done)
 
-1. Deploy the API using the image produced in Part 2 (from ECR).
+1. Deploy the API using the image on ECR.
 2. Ensure the API container/service is not directly exposed to the public internet.
-3. Expose the API through a managed secure entry point.
-4. Manage sensitive values securely.
+3. Expose the API through a managed secure entry point such as ALB or API Gateway.
+4. Manage sensitive values securely using AWS Secrets Manager.
 5. Use production RDS credentials from AWS Secrets Manager (do not hardcode DB credentials in code, task definitions, or repository files).
 
 ## Bonus outcomes
@@ -49,12 +49,11 @@ The following foundation is already set up for you:
 6. Enable HTTPS/TLS with a valid certificate (for example ACM-managed certificate).
 7. Serve the API through the domain candidate-test.co.uk (this domain registered and setup for you in [route53](https://console.aws.amazon.com/route53/v2/hostedzones?region=eu-north-1#ListRecordSets/Z09387322ANGIEFFO5CCP)).
 	- Verify by `curl "https://dns.google/resolve?name=candidate-test.co.uk&type=NS" | jq -r '.Answer[] | .data'` which should list all awsdns entries.
-8. Apply protections against common web attacks.
+8. Apply protections against common web attacks using AWS WAF.
 
 ## Constraints
 
 - The API server must **not** be directly accessible from the public internet.
-- The deployment must include protection against common web attacks.
 
 Examples of acceptable protections include (but are not limited to):
 
