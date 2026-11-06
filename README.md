@@ -37,12 +37,14 @@ We will start the exercise clock once these are confirmed.
 
 Follow the exercise in this order:
 
-1. **Part 1 - Code locally and test** (guide: ~25 minutes)
-	- Focus: Python, database relations, querying, local image build
+1. **Part 1 - Code review, fix, and local run** (guide: ~25 minutes)
+	- Focus: identify top 5 issues, fix top 1 issue, run locally
 	- Instructions: [PART1.md](PART1.md)
-2. **Part 2 - Deploy using image from ECR** (guide: ~30 minutes)
+2. **Part 2 - Deploy using image from ECR** (guide: ~35 minutes)
 	- Focus: AWS cloud know-how
-	- Instructions: [PART3.md](PART3.md)
+	- Instructions: [PART2.md](PART2.md)
+
+Total guide time: ~60 minutes.
 
 ## Objective
 

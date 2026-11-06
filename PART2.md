@@ -1,61 +1,70 @@
-# PART 2 - Build and Push Image to ECR
+# PART 2 - Deploy Image from ECR
 
-Previous: [PART1.md](PART1.md) | Next: [PART3.md](PART3.md)
+Previous: [PART1.md](PART1.md)
 
 ## Guide time
 
-~10 minutes
+~35 minutes
 
 ## Goal
 
-Build a container image from the API code and push it to Amazon ECR.
+Deploy the API using an image stored in ECR to any suitable AWS service.
 
-## Environment for this part
+## Candidate implementation freedom
 
-You should develop/update the `dockerfile` locally.
+You may choose your deployment path (for example ECS, App Runner, or another AWS service), as long as the required outcomes are met.
 
-You may test the image locally with `docker build`, but the ECR push step must be executed from **AWS CloudShell**.
+## Required outcomes (Definition of done)
 
-## 1) Prerequisites
+1. Deploy the API using an image from ECR.
+2. Expose the API through a managed secure entry point (for example ALB or API Gateway).
+3. Manage sensitive values through AWS Secrets Manager.
 
-- All code is pushed to the Git repository under your own branch
-- AWS CloudShell access is enabled
-- Git access to clone the interview repository branch
+An example deployment design:
 
-## 2) Fix the dockerfile locally first
+ALB -> ECS -> App
 
-Before CloudShell build/push, update the `dockerfile` in your local branch so it is ready for a successful image build.
+## Bonus outcomes
 
-Commit and push your dockerfile changes.
+5. Use production RDS credentials from AWS Secrets Manager (no hardcoded DB credentials).
+6. Enable HTTPS/TLS with a valid certificate.
+7. Serve traffic via candidate-test.co.uk.
+8. Add web protections such as AWS WAF.
 
-## 3) Clone the same branch in CloudShell
+## Validation
 
-```bash
-rm -rf cloud-interview-test
-git clone -b <branch-name> https://github.com/forceedge01/cloud-interview-test.git
-cd cloud-interview-test
-```
-
-## 4) Build and push to ECR
-
-Environment setup:
+Example request:
 
 ```bash
-export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
-export ECR_REPO="test-interviewee/<your-first-name>"
-export IMAGE_TAG="v1"
-export ECR_REPO_URL="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO"
-
-# login to ECR
-make ecr-login
+curl -X GET "https://<your-api-endpoint>/users/1" \
+	-H "Authorization: Bearer ${API_TOKEN}"
 ```
 
-Build the project image using containerisation and push to the following ECR repository:
+Expected output example:
 
-test-interviewee/<your-first-name>
+```json
+{
+	"id": 1,
+	"username": "alice",
+	"email": "alice@example.com",
+	"rbac": {
+		"role": "admin",
+		"permissions": [
+			"users:read",
+			"users:write",
+			"reports:read"
+		]
+	}
+}
+```
 
-Note: The repository should already exist on ECR.
+## Evidence to provide
 
-## Next Step
+- Architecture summary (1-2 paragraphs)
+- Key security controls implemented
+- Endpoint URL used for validation
+- Brief trade-off notes
 
-Previous: [PART1.md](PART1.md) | Next: [PART3.md](PART3.md)
+## End
+
+This is the end of the technical exercise.
