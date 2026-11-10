@@ -53,11 +53,8 @@ def get_user():
     except Exception as e:
         return jsonify({"error": f"Error constructing query: {str(e)}"}), 500
 
-    try:
-        cursor.execute(query)
-        user_row = cursor.fetchone()
-    except Exception as e:
-        return jsonify({"error": f"Error fetching user: {str(e)}"}), 500
+    cursor.execute(query)
+    user_row = cursor.fetchone()
 
     if not user_row:
        return jsonify(
