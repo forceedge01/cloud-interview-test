@@ -1,0 +1,8 @@
+# Consider the following code, what concerns do you have with it?
+Flask
+psycopg2-binary
+SQLAlchemy
+gunicorn
+PyMySQL
+alembic
+awsgi

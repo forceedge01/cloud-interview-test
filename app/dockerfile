@@ -1,0 +1,9 @@
+# Consider the following code, what concerns do you have with it?
+FROM python:latest
+
+WORKDIR /app
+COPY . /app
+
+EXPOSE 5000
+
+CMD ["python", "main.py"]
