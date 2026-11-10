@@ -30,13 +30,11 @@ def upgrade() -> None:
 
     op.create_table(
         "rbac",
-        sa.Column("user_id", sa.Integer(), nullable=False),
+        sa.Column("username", sa.String(length=255), nullable=False),
         sa.Column("role_name", sa.String(length=100), nullable=False),
         sa.Column("role_description", sa.String(length=255), nullable=True),
         sa.Column("permission_name", sa.String(length=150), nullable=False),
         sa.Column("permission_description", sa.String(length=255), nullable=True),
-        sa.ForeignKeyConstraint(["user_id"], ["users.id"]),
-        sa.PrimaryKeyConstraint("user_id", "role_name", "permission_name"),
     )
 
 
