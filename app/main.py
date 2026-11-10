@@ -1,9 +1,3 @@
-# Consider the following code, what concerns do you have with it?
-# Q1) Write concerns as comments.
-# Q2) Identify top 3 issues with this codebase.
-# Q3) Attempt to fix top 2 issues.
-# Q4) Suggest what checks we should run on this code in a pipeline.
-
 import os
 import pymysql
 from urllib.request import urlopen
